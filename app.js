@@ -77,6 +77,7 @@ app.get("/:amo/:info", async(req, res) => {
 app.post("/webhook", (req, res) => {
     responseFromWebhook = 'nhan duoc tu post man'
     console.log(responseFromWebhook)
+    return res.send(responseFromWebhook)
 })
 
 app.listen(port, () => {
