@@ -20,6 +20,7 @@ var storeId = 'ch1';
 var lang = 'vi';
 var payUrl = '';
 var baseUrl = 'https://payment-momo.herokuapp.com/'
+var responseFromWebhook = 'chua co j het'
 
 
 //signature
@@ -69,13 +70,13 @@ app.get("/:amo/:info", async(req, res) => {
     console.log(payUrl);
     let img = ''
     let qr = await QRCode.toDataURL(payUrl)
-    img = `<image src= " ` + qr + `" />`
+    img = `<image src= " ` + qr + `" /><p>` + responseFromWebhook + `</p>`
     return res.send(img)
 })
 
 app.post("/webhook", (req, res) => {
-    // console.log(req.body);
-    return res.send(req.body)
+    responseFromWebhook = 'nhan duoc tu post man'
+    console.log(responseFromWebhook)
 })
 
 app.listen(port, () => {
