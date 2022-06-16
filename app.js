@@ -9,7 +9,8 @@ var accessKey = 'KYJ2JRTH3kQPc0fM';
 var secretKey = 'QUENNIECcIAFlMpQzY0MJZggbHF7tONH';
 var partnerCode = 'MOMONDL820220615';
 var redirectUrl = 'https://google.com';
-var ipnUrl = 'https://webhook.site/c2766326-0711-4d58-8a28-379de96eb6da';
+var ipnUrl = 'https://payment-momo.herokuapp.com/webhook';
+// var ipnUrl = 'https://webhook.site/c2766326-0711-4d58-8a28-379de96eb6da';
 var orderId = partnerCode + new Date().getTime();
 var requestId = orderId;
 var extraData = '';
@@ -18,6 +19,7 @@ var requestType = 'captureWallet';
 var storeId = 'ch1';
 var lang = 'vi';
 var payUrl = '';
+var baseUrl = 'https://payment-momo.herokuapp.com/'
 
 
 //signature
@@ -69,7 +71,11 @@ app.get("/:amo/:info", async(req, res) => {
     let qr = await QRCode.toDataURL(payUrl)
     img = `<image src= " ` + qr + `" />`
     return res.send(img)
+})
 
+app.post("/webhook", (req, res) => {
+    // console.log(req.body);
+    return res.send(req.body)
 })
 
 app.listen(port, () => {
