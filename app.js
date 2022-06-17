@@ -14,7 +14,7 @@ app.use(express.json());
 var accessKey = 'KYJ2JRTH3kQPc0fM';
 var secretKey = 'QUENNIECcIAFlMpQzY0MJZggbHF7tONH';
 var partnerCode = 'MOMONDL820220615';
-var redirectUrl = 'https://google.com';
+var redirectUrl = 'https://https://team-knkai-payment-momo-main-7ilkntdzha-de.a.run.app/webhook';
 var ipnUrl = 'https://https://team-knkai-payment-momo-main-7ilkntdzha-de.a.run.app/webhook';
 // var ipnUrl = 'https://webhook.site/c2766326-0711-4d58-8a28-379de96eb6da';
 var orderId = partnerCode + new Date().getTime();
