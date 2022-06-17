@@ -4,6 +4,12 @@ const port = process.env.PORT || "8000"
 const axios = require('axios')
 var QRCode = require('qrcode')
 
+var fs = require('fs');
+var logFile = fs.createWriteStream('log.txt', { flags: 'a' });
+
+app.use(express.static(__dirname));
+app.use(express.json());
+
 //parameters
 var accessKey = 'KYJ2JRTH3kQPc0fM';
 var secretKey = 'QUENNIECcIAFlMpQzY0MJZggbHF7tONH';
@@ -75,9 +81,15 @@ app.get("/:amo/:info", async(req, res) => {
 })
 
 app.post("/webhook", (req, res) => {
-    responseFromWebhook = 'nhan duoc tu post man'
-    console.log(responseFromWebhook)
-    return res.send(responseFromWebhook)
+    responseFromWebhook = req.body
+    console.log(req.body)
+    fs.appendFileSync('log.txt', (new Date()) + JSON.stringify(req.body) + "\n")
+    return res.send(req.body)
+})
+
+
+app.get('/', (req, res) => {
+    return res.send('<h1>responseFromWebhook</h1>');
 })
 
 app.listen(port, () => {
