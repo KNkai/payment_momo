@@ -188,6 +188,7 @@ const cors = require('cors');
 const axios = require('axios')
 var QRCode = require('qrcode')
 app.use(bodyParser.json())
+const port = process.env.PORT || "8000"
 
 app.use(cors());
 
@@ -300,7 +301,7 @@ app.post('/webhook', (req, res) => {
     res.send(sockets);
 });
 
-server.listen(8080, () => {
+server.listen(port, () => {
     console.log(ip.address())
-    console.log('listening on *:8080');
+    console.log('listening on *' + port);
 });
