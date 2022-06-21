@@ -296,7 +296,7 @@ app.post('/webhook', (req, res) => {
     const sockets = Array.from(eventIO.io.sockets.sockets).map(socket => socket[0]);
 
     eventIO.io.sockets.sockets.forEach(element => {
-        element.emit('message', JSON.stringify(sockets))
+        element.emit('message', JSON.stringify(value))
     });
     res.send(value);
 });
