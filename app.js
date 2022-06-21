@@ -270,13 +270,13 @@ createOrderNew = async(amo, info) => {
     const result = response.data
     console.log("--------------------RESULTs----------------")
     console.log(result['qrCodeUrl']);
-    return result['qrCodeUrl']
+    return [result['qrCodeUrl'], _orderId]
 };
 
 
 
 app.get("/:amo/:info", async(req, res) => {
-    payUrl = await createOrderNew(req.params.amo, req.params.info);
+    var payUrl = await createOrderNew(req.params.amo, req.params.info);
     console.log("--------------------req - payUrl----------------")
     console.log(payUrl);
     // let img = ''
