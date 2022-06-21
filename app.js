@@ -298,7 +298,7 @@ app.post('/webhook', (req, res) => {
     eventIO.io.sockets.sockets.forEach(element => {
         element.emit('message', JSON.stringify(sockets))
     });
-    res.send(sockets);
+    res.send(value);
 });
 
 server.listen(port, () => {
