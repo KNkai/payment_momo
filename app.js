@@ -221,14 +221,13 @@ var partnerCode = 'MOMOBKUN20180529';
 var partnerName = "ICONVINA";
 var storeId = "";
 var requestType = "captureWallet";
-var ipnUrl = "";
-var redirectUrl = "";
-var orderId = "";
-var amount = "";
-var lang = "";
-var autoCapture = "";
-var orderInfo = "";
-var requestId = "";
+var ipnUrl = "https://payment-momo.herokuapp.com:8080/webhook";
+var redirectUrl = "https://payment-momo.herokuapp.com/";
+// var amount = "";
+var lang = "vi";
+var autoCapture = true;
+var orderInfo = "Thanh toC!n qua vC- MoMo";
+var requestId = "1642387834078id";
 var extraData = "";
 var signature = "";
 
@@ -269,8 +268,8 @@ createOrderNew = async(amo, info) => {
     });
     const result = response.data
     console.log("--------------------RESULTs----------------")
-    console.log(result['payUrl']);
-    return result['payUrl']
+    console.log(result['qrCodeUrl']);
+    return result['qrCodeUrl']
 };
 
 
@@ -289,6 +288,7 @@ app.get("/:amo/:info", async(req, res) => {
 app.get('/', (req, res) => {
     res.send('<h1>Hello world</h1>');
 });
+
 app.post('/webhook', (req, res) => {
     console.log('co request post')
     var value = req.body
